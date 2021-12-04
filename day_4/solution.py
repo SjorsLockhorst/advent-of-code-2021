@@ -95,12 +95,6 @@ class BingoGame:
 
         return self.winners
 
-    def find_last_winner(self):
-        while len(self.boards) != 1:
-            board, _ = self.play()
-            self.boards.remove(board)
-        return self.boards[0]
-
     def _load_boards(self, inputs: List[str]):
         """Create boards from input"""
         i = 2
@@ -131,7 +125,6 @@ class BingoGame:
 
 
 def get_winner_score(winner: Tuple[Board, Board.Number]):
-
     winner_board, winner_number = winner
 
     return (
@@ -156,8 +149,8 @@ def part_2():
     bingo_game = BingoGame(path="input.txt")
 
     last_winner = bingo_game.play()[-1]
-    print(last_winner[0].show())
     print(get_winner_score(last_winner))
 
 
+part_1()
 part_2()
